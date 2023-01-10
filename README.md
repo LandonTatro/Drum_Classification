@@ -23,14 +23,44 @@ The seven categories are:
 
 ## Dataset
 
+The dataset used for the training and scoring of the models was downloaded [here](https://www.dropbox.com/s/p736vokha3240e6/MDLib2.2.zip?dl=0).
+
+Within this dataset, there are drum sound variants such as "strike" (indicating a normal hit on the drum head), "rim" (hitting the metal rim of the drum), and "buzz" (letting the drumstick quietly drag/vibrate on the drumhead). For the purposes of this project, the strike variant was used for all drums. For cymbals, all variants were used (usually included "tip", "crash", and "clamp").
+
 ## Data Preparation
+
+The data was in .wav file format, which is fine to use with the Python library "librosa", which was used through the duration of the project. The initial function used to load the wav files provides the audio's amplitude in time-series format while also providing the audio sample rate (how many times audio is recorded per second - 22,050 times per second in this case). The audio files were trimmed down by cutting the remaining audio when the volume fell below 25 decibels. From here, the length of the audio file was calculated by dividing the amount of samples (length of the time series) by the sample rate.
+
+Feature engineering became important as the length of audio alone doesn't tell us much. The following features were extracted from our trimmed time series:
+
+  - root mean square values
+  - spectral centroid
+  - spectral bandwidth
+  - spectral rolloff
+  - zero crossing rate
+
+If you are interested in learning more about the other features offered within librosa, check out the [feature documentation](https://librosa.org/doc/main/feature.html).
+
+These values alone are not directly usable within the model, but inferred summary statistics from each calculation were effective. The following summary statistics were used as features:
+
+  - mean
+  - standard deviation
+  - minimum value
+  - Q1
+  - median
+  - Q3
+  - maximum
+  - Interquartile Range (IQR)
+
+In total, 41 features were used (trimmed length + each summary statistic variation of each sound feature).
 
 # Modeling
 
-## Baseline Model
+## Baseline Model & Results
 
-### Baseline Model Results
+As a baseline, a random forest classifier ensemble approach was taken. Random forest classifiers are known to be robust ensemble methods capable of making reasonably quick predictions. When designed correctly, random forests can mitigate issues with overfitting by tuning various hyperparameters. Basic experimentation was done tuning the hyperparameters, but the out-of-the-box model performed best (excluding the number of estimators, which was set to 300 trees).
 
-## Final Model
 
-### Final Model Results
+## Final Model & Results
+
+The final model used was the extreme gradient boost (known as XGBoost or XGB). The XGBoost is a more powerful form of the random forest that is capable of learning from the error coefficient in the prior decision trees. There are many hyperparameters to tune, such as the learning rate or gamma, that assist in avoiding overfitting while reaching impressive results quickly. In this case, mostly default settings proved to be effective, while the number of estimators was also set to 300 trees.
