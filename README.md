@@ -1,7 +1,7 @@
 # Drum_Classification - AI Academy Capstone
 
 # Purpose
-Speech recognition other sound recognition has been a major point of interest in the data science field for many years now, and has naturally found its way into the arts. This project has a long term goal of creating a model that will predict common drum sounds in real time. Theoretically, this can be deployed in a phone app where a plain text notation of all of the notes played will be transcribed to the device.
+Speech recognition as well as other sound recognition technologies have been a major point of interest in the data science field for many years now, though interest in machine learning and artificial intelligence in the arts is on the rise. This project has a long term goal of creating a model that will predict common drum sounds in real time. Theoretically, this can be deployed in a phone app where a plain text notation of all of the notes played will be transcribed to the device.
 
 An example of a theoretical output could be:
 
