@@ -27,6 +27,16 @@ The dataset used for the training and scoring of the models was downloaded [here
 
 Within this dataset, there are drum sound variants such as "strike" (indicating a normal hit on the drum head), "rim" (hitting the metal rim of the drum), and "buzz" (letting the drumstick quietly drag/vibrate on the drumhead). For the purposes of this project, the strike variant was used for all drums. For cymbals, all variants were used (usually included "tip", "crash", and "clamp").
 
+This project uses exactly 4,000 sounds from the dataset, and it is distributed as follows:
+
+  - hi-hat: 1,280 (tip + foot)
+  - crash: 640 (crash + tip + clamp)
+  - snare: 576 (strike)
+  - kick: 480 (long kick + dead kick)
+  - rack tom: 384 (strike)
+  - floor tom: 384 (strike)
+  - ride: 256 (tip)
+
 ## Data Preparation
 
 The data was in .wav file format, which is fine to use with the Python library "librosa", which was used through the duration of the project. The initial function used to load the wav files provides the audio's amplitude in time-series format while also providing the audio sample rate (how many times audio is recorded per second - 22,050 times per second in this case). The audio files were trimmed down by cutting the remaining audio when the volume fell below 25 decibels. From here, the length of the audio file was calculated by dividing the amount of samples (length of the time series) by the sample rate.
@@ -58,6 +68,8 @@ In total, 41 features were used (trimmed length + each summary statistic variati
 
 ## Baseline Model & Results
 
+The data was split into training and test sets, 75% and 25% respectively... This resulted in 3,000 training samples and 1,000 test samples.
+
 As a baseline, a random forest classifier ensemble approach was taken. Random forest classifiers are known to be robust ensemble methods capable of making reasonably quick predictions. When designed correctly, random forests can mitigate issues with overfitting by tuning various hyperparameters. Basic experimentation was done tuning the hyperparameters, but the out-of-the-box model performed best (excluding the number of estimators, which was set to 300 trees).
 
 ### Results
@@ -87,6 +99,6 @@ The final model used was the extreme gradient boost (known as XGBoost or XGB). T
 
 # Next Objective
 
-
+Identifying individual drum sounds is useful for linear drum patterns where only one drum or cymbal is played at a given time. Next, training a model on combinations of hits, such as a hihat being played with a snare, could be valuable. Additionally, if any sort of timing vectorization step is taken as real time predicting is integrated, it is likely that simple time signature and notes would be best to start with.
 
 
