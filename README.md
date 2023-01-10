@@ -60,7 +60,33 @@ In total, 41 features were used (trimmed length + each summary statistic variati
 
 As a baseline, a random forest classifier ensemble approach was taken. Random forest classifiers are known to be robust ensemble methods capable of making reasonably quick predictions. When designed correctly, random forests can mitigate issues with overfitting by tuning various hyperparameters. Basic experimentation was done tuning the hyperparameters, but the out-of-the-box model performed best (excluding the number of estimators, which was set to 300 trees).
 
+### Results
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The overall accuracy followed by more in-depth results are as follows:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balanced accuracy score: 97.81%
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="rf_classification_report" src="https://user-images.githubusercontent.com/108957599/211449231-f75f21ea-d3eb-4fac-a1ed-c63186ac9361.PNG">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="rf_cm" src="https://user-images.githubusercontent.com/108957599/211449241-2d251b9e-1981-4603-b8b2-08c7f552844e.PNG">
+
 
 ## Final Model & Results
 
 The final model used was the extreme gradient boost (known as XGBoost or XGB). The XGBoost is a more powerful form of the random forest that is capable of learning from the error coefficient in the prior decision trees. There are many hyperparameters to tune, such as the learning rate or gamma, that assist in avoiding overfitting while reaching impressive results quickly. In this case, mostly default settings proved to be effective, while the number of estimators was also set to 300 trees.
+
+### Results
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The overall accuracy followed by more in-depth results are as follows:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balanced accuracy score: 98.39%
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="xgb_classification_report" src="https://user-images.githubusercontent.com/108957599/211449449-5b100266-49df-4262-a692-528b4f4ff7ad.PNG">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="xgb_cm" src="https://user-images.githubusercontent.com/108957599/211449457-71413fc5-a6ab-4c6d-acd7-c7fccca1361e.PNG">
+
+# Next Objective
+
+
+
+
