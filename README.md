@@ -84,7 +84,9 @@ As a baseline, a lone decision tree classifier approach was taken. Decision tree
 
 ## Final Model & Results
 
-The final model used was the extreme gradient boost (known as XGBoost or XGB). The XGBoost is a more powerful form of the decision tree because it is made up of a forest of decision trees that collectively make predictions. Usually, a group of decision trees is referred to as a random forest model, but the XGBoost takes even that to the next level. The individual decision trees within an XGBoost model are capable of learning from the error coefficient in the prior decision tree. There are many hyperparameters to tune, such as the learning rate or gamma, that assist in avoiding overfitting while reaching impressive results quickly. In this case, mostly default settings proved to be effective, while the number of estimators was set to 300 trees.
+The final model used was the extreme gradient boost (known as XGBoost or XGB). The XGBoost is a more powerful form of the decision tree because it is made up of a forest of decision trees that collectively make predictions. Usually, a group of decision trees is referred to as a random forest model, but the XGBoost takes even that to the next level. The individual decision trees within an XGBoost model are capable of learning from the error coefficient in the prior decision tree.
+
+There are many hyperparameters to tune, such as the learning rate or gamma, that assist in avoiding overfitting while reaching impressive results quickly. In this case, mostly default settings proved to be effective, while the number of estimators was set to 300 trees.
 
 ### Results
 
