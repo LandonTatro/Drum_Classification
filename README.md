@@ -62,7 +62,7 @@ These values alone are not directly usable within the model, but inferred summar
   - maximum
   - Interquartile Range (IQR)
 
-In total, 41 features were used (trimmed length + each summary statistic variation of each sound feature).
+In total, 41 features were used (trimmed length + summary statistics of each sound feature).
 
 # Modeling
 
@@ -70,22 +70,21 @@ In total, 41 features were used (trimmed length + each summary statistic variati
 
 The data was split into training and test sets, 75% and 25% respectively... This resulted in 3,000 training samples and 1,000 test samples.
 
-As a baseline, a random forest classifier ensemble approach was taken. Random forest classifiers are known to be robust ensemble methods capable of making reasonably quick predictions. When designed correctly, random forests can mitigate issues with overfitting by tuning various hyperparameters. Basic experimentation was done tuning the hyperparameters, but the out-of-the-box model performed best (excluding the number of estimators, which was set to 300 trees).
+As a baseline, a lone decision tree classifier approach was taken. Decision trees are known to be simple, yet sometimes effective, methods capable of making quick predictions. Decision trees often run into issues with overfitting due to the lack of hyperparameter tuning and lack of depth. Basic experimentation was done tuning the hyperparameters, but the out-of-the-box model performed best.
 
 ### Results
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The overall accuracy followed by more in-depth results are as follows:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balanced accuracy score: 97.81%
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balanced accuracy score: 94.09%
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="rf_classification_report" src="https://user-images.githubusercontent.com/108957599/211449231-f75f21ea-d3eb-4fac-a1ed-c63186ac9361.PNG">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="dt_classification_report" src="https://user-images.githubusercontent.com/108957599/212183196-e75b6cbe-b477-4247-b2b5-54f71ae6e625.PNG">
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="rf_cm" src="https://user-images.githubusercontent.com/108957599/211449241-2d251b9e-1981-4603-b8b2-08c7f552844e.PNG">
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="350" alt="dt_cm" src="https://user-images.githubusercontent.com/108957599/212183243-ac53fc58-66af-4424-a78c-0e84ee0efcd7.PNG">
 
 ## Final Model & Results
 
-The final model used was the extreme gradient boost (known as XGBoost or XGB). The XGBoost is a more powerful form of the random forest that is capable of learning from the error coefficient in the prior decision trees. There are many hyperparameters to tune, such as the learning rate or gamma, that assist in avoiding overfitting while reaching impressive results quickly. In this case, mostly default settings proved to be effective, while the number of estimators was also set to 300 trees.
+The final model used was the extreme gradient boost (known as XGBoost or XGB). The XGBoost is a more powerful form of the decision tree because it is made up of a forest of decision trees that collectively make predictions. Usually, a group of decision trees is referred to as a random forest model, but the XGBoost takes even that to the next level. The individual decision trees within an XGBoost model are capable of learning from the error coefficient in the prior decision tree. There are many hyperparameters to tune, such as the learning rate or gamma, that assist in avoiding overfitting while reaching impressive results quickly. In this case, mostly default settings proved to be effective, while the number of estimators was set to 300 trees.
 
 ### Results
 
